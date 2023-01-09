@@ -2,8 +2,10 @@
   "name": "custom-link",
   "version": "1.0.0",
   "description": "Only symlink certain folders when npm linking",
-  "main": "index.js",
-  "bin": "index.js",
+  "main": "binindex.js",
+  "bin": {
+    "custom-link": "bin/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

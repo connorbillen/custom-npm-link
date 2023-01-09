@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 const { resolve } = require('node:path');
 const { symlink, rmSync } = require('node:fs');
 const { execSync } = require('node:child_process');
