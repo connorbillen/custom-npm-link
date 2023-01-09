@@ -2,7 +2,7 @@
 const { resolve } = require('node:path');
 const { symlink, rmSync } = require('node:fs');
 const { execSync } = require('node:child_process');
-const { cwd } = require('node:process');
+const { cwd: getCwd } = require('node:process');
 
 if (process.argv.length < 4) {
     console.log('Usage: npx custom-link [package name] [filename1] [filename2]...');
@@ -12,7 +12,7 @@ if (process.argv.length < 4) {
 const args = process.argv.slice(2);
 const packageName = args[0];
 const files = args.slice(1);
-const cwd = cwd();
+const cwd = getCwd();
 let globalPrefix;
 try {
     globalPrefix = execSync('npm prefix -g').toString().split('\n').slice(-2, -1)[0];
