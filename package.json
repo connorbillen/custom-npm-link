@@ -1,0 +1,25 @@
+{
+  "name": "custom-link",
+  "version": "1.0.0",
+  "description": "Only symlink certain folders when npm linking",
+  "main": "index.js",
+  "bin": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/connorbillen/custom-link.git"
+  },
+  "keywords": [
+    "link",
+    "npm",
+    "folder"
+  ],
+  "author": "Connor Billen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/connorbillen/custom-link/issues"
+  },
+  "homepage": "https://github.com/connorbillen/custom-link#readme"
+}
