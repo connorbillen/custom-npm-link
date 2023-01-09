@@ -1,5 +1,5 @@
 {
-  "name": "custom-link",
+  "name": "custom-npm-link",
   "version": "1.0.0",
   "description": "Only symlink certain folders when npm linking",
   "main": "binindex.js",
