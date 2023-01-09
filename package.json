@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Only symlink certain folders when npm linking",
   "main": "binindex.js",
+  "files": [
+    "bin"
+  ],
   "bin": {
     "custom-link": "bin/index.js"
   },
