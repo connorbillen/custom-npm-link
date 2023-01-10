@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 const { resolve } = require('node:path');
-const { symlink, rmSync } = require('node:fs');
+const { symlink, rmSync, existsSync, mkdirSync } = require('node:fs');
 const { execSync } = require('node:child_process');
 const { cwd: getCwd } = require('node:process');
 
@@ -9,9 +9,7 @@ if (process.argv.length < 4) {
     return;
 }
 
-const args = process.argv.slice(2);
-const packageName = args[0];
-const files = args.slice(1);
+const paths = process.argv.slice(2);
 const cwd = getCwd();
 let globalPrefix;
 try {
@@ -20,11 +18,16 @@ try {
     console.log('Failed to parse global prefix string');
 }
 
-files.forEach((file) => {
-    rmSync(resolve(cwd, 'node_modules', packageName, file), { recursive: true, force: true });
+paths.forEach((path) => {
+    const localPath = resolve(cwd, 'node_modules', path);
+    const globalPath = resolve(globalPrefix, 'node_modules', path);
+
+    if (existsSync(localPath)) {
+        rmSync(localPath, { recursive: true, force: true });
+    } 
     symlink(
-        resolve(globalPrefix, 'node_modules', packageName, file),
-        resolve(cwd, 'node_modules', packageName, file),
+        globalPath,
+        localPath,
         'file',
         (err) => {
             if (err) {
@@ -33,5 +36,5 @@ files.forEach((file) => {
         },
     );
 
-    console.log(`Linked ${resolve(cwd,'node_modules', packageName, file)} to contents of ${resolve(globalPrefix, 'node_modules', packageName, file)}`);
+    console.log(`Linked ${localPath} to contents of ${globalPath}`);
 });
