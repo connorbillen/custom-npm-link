@@ -38,6 +38,6 @@ paths.forEach((path) => {
         mkdirSync(baseLocalPath, { recursive: true });
     }
 
-    symlinkSync(globalPath, localPath, 'file');
+    symlinkSync(globalPath, localPath, 'dir');
     console.log(`Linked ${localPath} to contents of ${globalPath}`);
 });
