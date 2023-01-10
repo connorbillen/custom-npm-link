@@ -2,19 +2,19 @@
   "name": "custom-npm-link",
   "version": "1.0.0",
   "description": "Only symlink certain folders when npm linking",
-  "main": "binindex.js",
+  "main": "bin/index.js",
   "files": [
     "bin"
   ],
   "bin": {
-    "custom-link": "bin/index.js"
+    "custom-npm-link": "bin/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/connorbillen/custom-link.git"
+    "url": "git+https://github.com/connorbillen/custom-npm-link.git"
   },
   "keywords": [
     "link",
@@ -24,7 +24,7 @@
   "author": "Connor Billen",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/connorbillen/custom-link/issues"
+    "url": "https://github.com/connorbillen/custom-npm-link/issues"
   },
-  "homepage": "https://github.com/connorbillen/custom-link#readme"
+  "homepage": "https://github.com/connorbillen/custom-npm-link#readme"
 }

@@ -5,7 +5,7 @@ const { execSync } = require('node:child_process');
 const { cwd: getCwd } = require('node:process');
 
 if (process.argv.length < 4) {
-    console.log('Usage: npx custom-link [package name] [filename1] [filename2]...');
+    console.log('Usage: npx custom-npm-link [package name] [filename1] [filename2]...');
     return;
 }
 
