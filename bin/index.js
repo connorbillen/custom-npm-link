@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 const { resolve } = require('node:path');
-const { symlink, rmSync, existsSync, mkdirSync } = require('node:fs');
+const { symlinkSync, rmSync, existsSync, mkdirSync } = require('node:fs');
 const { execSync } = require('node:child_process');
 const { cwd: getCwd } = require('node:process');
 
@@ -24,22 +24,15 @@ paths.forEach((path) => {
     const globalPath = resolve(globalPrefix, 'node_modules', path);
 
     if (existsSync(localPath)) {
+        console.log('Destination path exists, removing');
+        rmSync(localPath, { force: true });
         rmSync(localPath, { recursive: true, force: true });
     } 
     if (!existsSync(baseLocalPath)) {
+        console.log('Destination directory doesn\'t exist, creating');
         mkdirSync(baseLocalPath, { recursive: true });
     }
 
-    symlink(
-        globalPath,
-        localPath,
-        'file',
-        (err) => {
-            if (err) {
-                console.log('', err);
-            }
-        },
-    );
-
+    symlinkSync(globalPath, localPath, 'file');
     console.log(`Linked ${localPath} to contents of ${globalPath}`);
 });
