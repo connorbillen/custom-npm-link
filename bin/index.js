@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 const { resolve } = require('node:path');
-const { symlinkSync, rmSync, existsSync, mkdirSync } = require('node:fs');
+const { readlinkSync, symlinkSync, rmSync, existsSync, mkdirSync } = require('node:fs');
 const { execSync } = require('node:child_process');
 const { cwd: getCwd } = require('node:process');
 
@@ -25,9 +25,9 @@ paths.forEach((path) => {
 
     console.log('', localPath);
     console.log('', existsSync(localPath));
-    if (existsSync(localPath)) {
+    console.log('', readlinkSync(localPath));
+    if (existsSync(localPath) || readlinkSync(localPath).length) {
         console.log('Destination path exists, removing');
-        rmSync(localPath, { force: true });
         rmSync(localPath, { recursive: true, force: true });
     } 
     if (!existsSync(baseLocalPath)) {
