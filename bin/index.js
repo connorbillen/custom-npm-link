@@ -23,11 +23,14 @@ paths.forEach((path) => {
     const baseLocalPath = resolve(localPath, '../');
     const globalPath = resolve(globalPrefix, 'node_modules', path);
 
-    console.log('', localPath);
-    console.log('', existsSync(localPath));
-    console.log('', readlinkSync(localPath));
-    if (existsSync(localPath) || readlinkSync(localPath).length) {
-        console.log('Destination path exists, removing');
+    try {
+        if (readlinkSync(localPath).length) {
+            console.log('Symbolic link exists at destination, removing');
+            rmSync(localPath, { recursive: true, force: true });
+        }
+    } catch (err) {}
+    if (existsSync(localPath)) {
+        console.log('File exists at destination, removing');
         rmSync(localPath, { recursive: true, force: true });
     } 
     if (!existsSync(baseLocalPath)) {
