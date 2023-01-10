@@ -1,6 +1,6 @@
 {
   "name": "custom-npm-link",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Only symlink certain folders when npm linking",
   "main": "bin/index.js",
   "files": [
