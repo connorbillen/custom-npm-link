@@ -4,7 +4,7 @@ const { symlink, rmSync, existsSync, mkdirSync } = require('node:fs');
 const { execSync } = require('node:child_process');
 const { cwd: getCwd } = require('node:process');
 
-if (process.argv.length < 4) {
+if (process.argv.length < 3) {
     console.log('Usage: npx link [path1] [path2] [path3]...');
     return;
 }
