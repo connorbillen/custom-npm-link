@@ -23,6 +23,8 @@ paths.forEach((path) => {
     const baseLocalPath = resolve(localPath, '../');
     const globalPath = resolve(globalPrefix, 'node_modules', path);
 
+    console.log('', localPath);
+    console.log('', existsSync(localPath));
     if (existsSync(localPath)) {
         console.log('Destination path exists, removing');
         rmSync(localPath, { force: true });
